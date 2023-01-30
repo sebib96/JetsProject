@@ -1,20 +1,18 @@
 package com.skilldistillery.entities;
+//JetsImpl exists as a Generic Jet Class meaning a Jet object that does not fall into Fighter or Cargo category.
 
-public class JetsImpl extends Jet{
-
+public class JetsImpl extends Jet {
 	public JetsImpl() {
 	}
-	
+
 	public JetsImpl(String model, double speed, int range, long price) {
 		super(model, speed, range, price);
 	}
 
 	@Override
 	public void fly() {
-		int range = this.getRange();
-		double topSpeed = this.getSpeed();
-		int flightTime = (int) (range / topSpeed);
-	System.out.println(this.getModel() + " takes off. Estimated fly time: " + flightTime);
+		AirField test = new AirField();
+		test.fly();
 	}
 
 }

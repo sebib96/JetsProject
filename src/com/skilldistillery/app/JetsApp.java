@@ -1,18 +1,13 @@
 package com.skilldistillery.app;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.skilldistillery.entities.AirField;
 import com.skilldistillery.entities.CargoPlane;
 import com.skilldistillery.entities.FighterJet;
-import com.skilldistillery.entities.JetsImpl;
+
 
 public class JetsApp {
 	Scanner kb = new Scanner(System.in);
@@ -27,7 +22,7 @@ public class JetsApp {
 	}
 
 	public void runApp() {
-		printMenu();
+			printMenu();
 	}
 
 	public void printMenu() {
@@ -42,8 +37,13 @@ public class JetsApp {
 			System.out.println("7. Add Jet to Fleet");
 			System.out.println("8. Remove Jet from Fleet");
 			System.out.println("9. Quit.");
-			int choice = kb.nextInt();
-
+			int choice = 0;
+			try {
+			choice = kb.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Enter a valid choice.");
+				kb.next();
+			}
 			switch (choice) {
 			case 1:
 				listJetList();
@@ -75,14 +75,15 @@ public class JetsApp {
 				break;
 			}
 		} while (running);
-	}
+		}
+	
 
 	private void listJetList() {
-		macdill.showListOfJets();
+		macdill.showFullListOfJets();
 	}
 
 	private void scrambleJets() {
-
+		macdill.fly();
 	}
 
 	private void printFastestJet() {
@@ -96,10 +97,11 @@ public class JetsApp {
 	private void loadCargoJet() {
 		CargoPlane cargoPlane = new CargoPlane();
 		cargoPlane.loadCargo();
-
 	}
 
 	private void dogfight() {
+		FighterJet fighterJet = new FighterJet();
+		fighterJet.dogFight();
 	}
 
 	private void addJetToFleet() {
@@ -107,5 +109,6 @@ public class JetsApp {
 	}
 
 	private void removeJetfromFleet() {
+		macdill.removeJet(kb);
 	}
 }

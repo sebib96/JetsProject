@@ -8,10 +8,10 @@ public abstract class Jet {
 	private double speed;
 	private int range;
 	private long price;
-	
+
 	public Jet() {
 	}
-	
+
 	public Jet(String model, double speed, int range, long price) {
 		super();
 		this.model = model;
@@ -54,21 +54,18 @@ public abstract class Jet {
 
 	@Override
 	public String toString() {
-		return "Mode: " + model + " Speed: " + speed + " Range: " + range + " Price: " + price + "\n";
+		return "Model: " + model + " Speed: " + speed + " Range: " + range + " Price: " + price + "\n";
 	}
-	
-	public abstract void fly();
-	
-	public double getSpeedInMach() {
-		return 0.0;
-		
+
+	public void fly() {
+		AirField test = new AirField();
+		test.fly();
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(model, price, range, speed);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
